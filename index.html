@@ -417,6 +417,17 @@
                 >
                   기부증서 보기
                 </button>
+
+                <!-- 전체 보기에서는 증서를 본문 안에 함께 표시합니다. -->
+                <figure class="reading-certificate">
+                  <img
+                    src="images/donation.jpg"
+                    alt="개인정보가 삭제된 머리카락 기부증서. 기부일자 2025년 8월 8일."
+                    width="1073"
+                    height="1511"
+                  >
+                  <figcaption>머리카락 기부증서 · 2025.08.08</figcaption>
+                </figure>
               </div>
             </div>
           </div>
@@ -688,6 +699,10 @@
 
         <!-- 두 버튼 모두 팝업 밖, 소개 영역 안에 있습니다. -->
         <div class="preview-actions">
+          <button type="button" id="reading-button" class="reading-button"
+            aria-pressed="false" aria-controls="story-content values-content experience-content relationships-content goals-content privacy-content">
+            전체 내용 보기
+          </button>
           <button
             type="button"
             id="certificate-open"

@@ -291,3 +291,62 @@ accordionButtons.forEach((button) => {
 
 // 첫 화면에서는 모든 본문 영역을 숨깁니다.
 updateStoryContent();
+// ── 전체 내용 보기: 기존 원고를 복제하지 않고 모두 펼칩니다. ──
+const readingButton = document.querySelector("#reading-button");
+let readingAll = false;
+let readingPreviousScroll = 0;
+let readingPreviousPanels = [];
+
+function enterReadingMode() {
+  readingPreviousScroll = window.scrollY;
+  readingPreviousPanels = accordionButtons.filter(
+    (button) => button.getAttribute("aria-expanded") === "true"
+  );
+  stopAnimations();
+  readingAll = true;
+  document.body.classList.add("reading-all");
+  readingButton.textContent = "목차 방식으로 돌아가기";
+  readingButton.setAttribute("aria-pressed", "true");
+
+  Object.values(contentSections).forEach((section) => {
+    section.hidden = false;
+  });
+  accordionButtons.forEach((button) => {
+    setAccordionState(button, true);
+    // 전체 보기에서는 소제목을 눌러 본문을 접지 않습니다.
+    button.disabled = true;
+  });
+  readingButton.focus({ preventScroll: true });
+  window.scrollTo({ top: 0, behavior: "instant" });
+}
+
+function exitReadingMode(returnHome = false) {
+  readingAll = false;
+  document.body.classList.remove("reading-all");
+  readingButton.textContent = "전체 내용 보기";
+  readingButton.setAttribute("aria-pressed", "false");
+  accordionButtons.forEach((button) => { button.disabled = false; });
+
+  if (returnHome) selectedSection = null;
+  applyMenuLayout();
+  updateStoryContent();
+  if (!returnHome) {
+    // 전체 보기를 켜기 전에 읽고 있던 본문도 복원합니다.
+    readingPreviousPanels.forEach((button) => setAccordionState(button, true));
+  }
+  (returnHome ? homeButton : readingButton).focus({ preventScroll: true });
+  window.scrollTo({ top: returnHome ? 0 : readingPreviousScroll, behavior: "instant" });
+}
+
+readingButton.addEventListener("click", () => {
+  if (readingAll) exitReadingMode();
+  else enterReadingMode();
+});
+
+// 전체 보기에서 '나의'를 누르면 초기 목차 화면으로 돌아갑니다.
+// 기존 homeButton 처리보다 먼저 실행되는 캡처 이벤트입니다.
+homeButton.addEventListener("click", (event) => {
+  if (!readingAll) return;
+  event.stopImmediatePropagation();
+  exitReadingMode(true);
+}, true);

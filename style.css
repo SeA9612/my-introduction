@@ -781,3 +781,85 @@ html {
   outline: 2px solid #cbd8ff;
   outline-offset: 4px;
 }
+/* 전체 내용을 한 페이지에서 읽는 모드 */
+.reading-button {
+  border: 1px solid #737b90;
+  border-radius: 4px;
+  background: #101421;
+  color: #fff;
+  padding: 9px 12px;
+  min-height: 36px;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+.reading-button:hover { background: #20283b; }
+.reading-button:focus-visible { outline: 2px solid #cbd8ff; outline-offset: 4px; }
+body.reading-all .page { padding-top: 90px; }
+body.reading-all .intro { display: block; width: 100%; min-width: 0; }
+body.reading-all .intro .main-title {
+  font-size: clamp(56px, 8vw, 100px);
+  max-width: 900px;
+  margin: 0 auto 48px;
+}
+body.reading-all .intro .menu { display: none; }
+body.reading-all .intro .story-content {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 56px;
+  animation: none;
+}
+/* 각 대목차를 실제 화면에도 표시합니다. */
+body.reading-all .story-content > h2 {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0 0 20px;
+  overflow: visible;
+  clip-path: none;
+  white-space: normal;
+  color: #fff;
+  font-size: clamp(26px, 4vw, 42px);
+  line-height: 1.4;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+body.reading-all .accordion-toggle { cursor: default; color: #fff; opacity: 1; }
+body.reading-all .accordion-symbol { display: none; }
+body.reading-all .accordion-panel { transition: none; }
+/* 긴 글을 읽는 중에도 복귀 버튼에 바로 접근할 수 있습니다. */
+body.reading-all .reading-button {
+  position: fixed;
+  top: 16px;
+  right: max(24px, env(safe-area-inset-right));
+  z-index: 10;
+  min-height: 44px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+/* 긴 전체보기에서도 우주 사진을 화면 크기에 맞춰 유지합니다. */
+body.reading-all { background-attachment: fixed; }
+
+/* 전체 보기에서만 본문 안에 증서 원본을 표시합니다. */
+.reading-certificate { display: none; }
+body.reading-all .reading-certificate {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  margin: 24px auto 0;
+}
+.reading-certificate img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #737b90;
+}
+.reading-certificate figcaption {
+  margin-top: 10px;
+  color: #e0e4ef;
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: center;
+}
