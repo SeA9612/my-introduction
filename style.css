@@ -1,0 +1,783 @@
+/* 여백과 테두리를 포함해서 요소의 크기를 계산합니다. */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background-color: #070913;
+}
+
+body {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
+
+  /* 검은 막을 겹쳐 별빛 위에서도 글자가 잘 보이게 합니다. */
+  background-image:
+    linear-gradient(
+      rgba(3, 5, 15, 0.55),
+      rgba(3, 5, 15, 0.78)
+    ),
+    url("images/space.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 화면 전체를 차지하되, 내용이 길면 아래로 늘어납니다. */
+.page {
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: clamp(40px, 8vh, 90px) clamp(28px, 7vw, 140px) 32px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* '나의'와 목차를 나란히 배치합니다. */
+.intro {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(40px, 6vw, 115px);
+}
+
+.main-title {
+  margin: 0;
+  flex-shrink: 0;
+
+  /* 화면 너비에 따라 글자 크기가 변합니다. */
+  font-size: clamp(120px, 15vw, 280px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.08em;
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.7vh, 20px);
+
+  font-size: clamp(20px, 2vw, 36px);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.035em;
+}
+
+/* 남는 세로 공간을 이용해 소개 영역을 오른쪽 아래로 보냅니다. */
+.preview {
+  width: min(100%, 650px);
+  margin-top: auto;
+  margin-left: auto;
+  padding: 20px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 110px;
+  align-items: center;
+  gap: 24px;
+
+  /* 작은 글자의 가독성을 위한 어두운 배경 */
+  background-color: rgba(3, 5, 15, 0.86);
+  border-top: 1px solid #737b90;
+}
+
+.preview-text {
+  min-width: 0;
+}
+
+.preview h2 {
+  margin: 0 0 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: #d6dbea;
+}
+
+.preview p {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.summary {
+  margin: 0 0 10px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.purpose {
+  margin: 0 0 12px;
+  color: #d6dbea;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.activities {
+  margin: 0 0 14px;
+  color: #e0e4ef;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.preview-caption {
+  margin: 0;
+  font-size: 12px;
+  color: #d6dbea;
+}
+
+.certificate {
+  margin: 0;
+}
+
+.certificate img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #a5adbf;
+}
+
+.certificate figcaption {
+  margin-top: 8px;
+  color: #d6dbea;
+  font-size: 10px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* 작은 화면에서는 큰 글자 아래에 목차를 놓습니다. */
+@media (max-width: 700px) {
+  .page {
+    padding: 40px 24px 24px;
+    gap: 48px;
+  }
+
+  .intro {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .main-title {
+    font-size: clamp(100px, 25vw, 170px);
+  }
+
+  .menu {
+    padding: 0;
+    gap: 14px;
+    font-size: clamp(20px, 5vw, 28px);
+  }
+
+  .preview {
+    padding: 18px;
+    grid-template-columns: minmax(0, 1fr) 88px;
+    gap: 16px;
+  }
+}
+
+/* 아주 좁은 화면에서는 증서를 본문 아래로 배치합니다. */
+@media (max-width: 380px) {
+  .preview {
+    grid-template-columns: 1fr;
+  }
+
+  .certificate {
+    width: 100px;
+  }
+}
+/* 증서 축소 이미지를 없앴으므로 소개 영역을 한 칸으로 변경 */
+.preview {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* 기부증서 미리보기 버튼 */
+.certificate-open {
+  padding: 8px 0;
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  font: inherit;
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  cursor: pointer;
+}
+
+.certificate-open:hover {
+  color: #cbd8ff;
+}
+
+/* 키보드로 이동했을 때 현재 버튼을 표시 */
+.certificate-open:focus-visible,
+.certificate-close:focus-visible {
+  outline: 2px solid #cbd8ff;
+  outline-offset: 5px;
+}
+
+/* 팝업 크기와 배경 */
+.certificate-dialog {
+  width: min(560px, calc(100% - 32px));
+  max-height: 90vh;
+  max-height: 90dvh;
+  margin: auto;
+  padding: 16px;
+  overflow-y: auto;
+  border: 1px solid #737b90;
+  border-radius: 8px;
+  background: #101421;
+  color: #ffffff;
+}
+
+/* 팝업 뒤쪽 화면을 어둡게 처리 */
+.certificate-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 14px;
+}
+
+.dialog-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.certificate-close {
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid #737b90;
+  border-radius: 4px;
+  background: #20283b;
+  color: #ffffff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.certificate-close:hover {
+  background: #303d59;
+}
+
+.dialog-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 팝업이 열려 있는 동안 뒤쪽 페이지의 스크롤 방지 */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* 목차 버튼: 기존 글자 크기와 글꼴을 그대로 사용합니다. */
+.menu-button {
+  display: block;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+
+  color: #d6dbea;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-align: left;
+  word-break: keep-all;
+  cursor: pointer;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* 마우스를 사용할 수 있는 기기에서만 적용 */
+@media (hover: hover) {
+  .menu-button:hover {
+    color: #ffffff;
+    transform: translateX(6px);
+  }
+}
+
+/* Tab 키로 이동했을 때 현재 위치를 명확히 표시 */
+.menu-button:focus-visible {
+  color: #ffffff;
+  outline: 2px solid #cbd8ff;
+  outline-offset: 6px;
+  border-radius: 2px;
+}
+
+/* 누르고 있는 순간의 반응 */
+.menu-button:active {
+  color: #b8caff;
+}
+
+/* 운영체제에서 움직임 줄이기를 설정했다면 이동 효과 중단 */
+@media (prefers-reduced-motion: reduce) {
+  .menu-button {
+    transition: none;
+  }
+
+  .menu-button:hover {
+    transform: none;
+  }
+}
+
+/* '나의'를 기존 디자인 그대로 버튼으로 만듭니다. */
+.home-button {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  cursor: pointer;
+}
+
+.home-button:focus-visible,
+.motion-button:focus-visible {
+  outline: 2px solid #cbd8ff;
+  outline-offset: 6px;
+}
+
+/* 모션 설정 버튼 */
+.motion-button {
+  margin-left: 16px;
+  padding: 8px 4px;
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* 목차를 선택한 화면의 배치 */
+.intro.is-selected {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.7fr);
+  column-gap: clamp(24px, 5vw, 96px);
+  row-gap: 14px;
+  align-items: start;
+}
+
+.intro.is-selected .main-title {
+  grid-column: 1;
+  grid-row: 1;
+  margin-bottom: 24px;
+}
+
+/*
+  목록의 글자 요소를 그대로 사용하면서
+  부모인 intro의 격자에 배치합니다.
+*/
+.intro.is-selected .menu {
+  display: contents;
+}
+
+.intro.is-selected .menu li {
+  min-width: 0;
+  grid-column: 1;
+  grid-row: var(--menu-row);
+}
+
+.intro.is-selected .menu-button {
+  font-size: clamp(16px, 1.6vw, 28px);
+}
+
+/* 선택한 목차는 '나의' 오른쪽에 크게 표시합니다. */
+.intro.is-selected .menu li.is-current {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+}
+
+.intro.is-selected .is-current .menu-button {
+  color: #ffffff;
+  font-size: clamp(40px, 7.5vw, 140px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.055em;
+  overflow-wrap: anywhere;
+}
+
+/* 긴 제목은 공간에 맞게 크기를 줄입니다. */
+.intro.is-selected .is-current.is-long .menu-button {
+  font-size: clamp(30px, 4.5vw, 84px);
+}
+
+/* 선택 상태는 마우스를 떼도 밑줄로 구분됩니다. */
+.menu-button[aria-pressed="true"] {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 12px;
+}
+
+/* 이동 중에는 hover 이동이 겹치지 않도록 합니다. */
+.intro.is-moving .menu-button,
+.intro .is-current .menu-button {
+  transform: none;
+}
+
+/* 작은 화면에서는 제목과 목차를 세로로 배치합니다. */
+@media (max-width: 700px) {
+  .intro.is-selected {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .intro.is-selected .main-title {
+    margin-bottom: 0;
+  }
+
+  .intro.is-selected .menu li.is-current {
+    grid-column: 1;
+    grid-row: 2;
+    margin-bottom: 16px;
+  }
+
+  .intro.is-selected .menu li:not(.is-current) {
+    grid-column: 1;
+    grid-row: var(--mobile-row);
+  }
+
+  .intro.is-selected .is-current .menu-button {
+    font-size: clamp(40px, 12.5vw, 80px);
+  }
+
+  .intro.is-selected .is-current.is-long .menu-button {
+    font-size: clamp(28px, 8vw, 52px);
+  }
+
+  .intro.is-selected .menu-button {
+    font-size: 20px;
+  }
+}
+
+/* 사용자가 모션을 끄면 hover 움직임도 멈춥니다. */
+body.motion-off .menu-button {
+  transition: none;
+}
+
+body.motion-off .menu-button:hover {
+  transform: none;
+}
+
+/* 미리보기와 모션 버튼을 나란히 배치 */
+.preview-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.preview-actions .motion-button {
+  margin-left: 0;
+}
+
+/* 첫 화면: 미리보기와 모션 버튼을 나란히 배치 */
+.preview .preview-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+.preview-actions .certificate-open,
+.preview-actions .motion-button {
+  flex: 0 0 auto;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* 팝업이 닫혀 있으면 숨깁니다. */
+dialog.certificate-dialog:not([open]) {
+  display: none;
+}
+
+/* 팝업 내부는 위에서 아래로 배치합니다. */
+dialog.certificate-dialog[open] {
+  display: block;
+  width: min(560px, calc(100% - 32px));
+  max-width: calc(100% - 32px);
+  max-height: 90vh;
+  max-height: 90dvh;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+/* 팝업 상단: 왼쪽 제목, 오른쪽 닫기 */
+.certificate-dialog .dialog-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  margin: 0 0 14px;
+}
+
+.dialog-header h2,
+.dialog-header .certificate-close {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* 이미지는 팝업 너비 안에 맞춥니다. */
+.certificate-dialog .dialog-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+/* 화면에서는 숨기고, 화면 읽기 프로그램에는 제목을 전달합니다. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* '이야기' 제목 아래, 오른쪽 영역에 본문을 놓습니다. */
+.intro.is-selected .story-content {
+  grid-column: 2;
+  grid-row: 2 / span 5;
+  align-self: start;
+  min-width: 0;
+  width: 100%;
+  max-width: 720px;
+}
+
+/* 다른 목차를 보고 있을 때는 완전히 숨깁니다. */
+.story-content[hidden] {
+  display: none !important;
+}
+
+/* 소제목 영역 등장 */
+.story-content:not([hidden]) {
+  animation: story-appear 0.4s ease both;
+}
+
+@keyframes story-appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.accordion-item {
+  border-bottom: 1px solid #737b90;
+}
+
+.accordion-heading {
+  margin: 0;
+}
+
+/* 소제목 버튼 */
+.accordion-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  width: 100%;
+  min-height: 52px;
+  padding: 14px 4px;
+  border: 0;
+  background: transparent;
+
+  color: #e0e4ef;
+  font: inherit;
+  font-size: clamp(18px, 1.8vw, 26px);
+  text-align: left;
+  cursor: pointer;
+}
+
+.accordion-toggle:hover,
+.accordion-toggle[aria-expanded="true"] {
+  color: #ffffff;
+}
+
+.accordion-toggle:focus-visible {
+  outline: 2px solid #cbd8ff;
+  outline-offset: 3px;
+}
+
+.accordion-symbol {
+  flex-shrink: 0;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+/* 높이가 0인 상태에서 실제 본문 높이까지 펼칩니다. */
+.accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+
+  transition:
+    grid-template-rows 0.4s ease,
+    opacity 0.4s ease;
+}
+
+.accordion-panel.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.accordion-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.accordion-copy {
+  margin: 4px 0 20px;
+  padding: 16px 20px;
+  background: rgba(3, 5, 15, 0.86);
+  color: #f0f2f8;
+  font-size: 16px;
+  line-height: 1.9;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.accordion-copy p {
+  margin: 0;
+}
+
+.accordion-copy p + p {
+  margin-top: 14px;
+}
+
+/* 모션 OFF일 때 등장과 펼침을 즉시 처리합니다. */
+body.motion-off .story-content {
+  animation: none;
+}
+
+body.motion-off .accordion-panel {
+  transition: none;
+}
+
+/* 작은 화면: 선택 제목 → 본문 → 나머지 목차 순서 */
+@media (max-width: 700px) {
+  .intro.is-selected .story-content {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .intro.is-selected.has-story .menu li:not(.is-current) {
+    grid-row: calc(var(--mobile-row) + 1);
+  }
+}
+
+/* 성향의 네 항목 */
+.personality-list {
+  margin: 0;
+  padding-left: 1.25em;
+}
+
+.personality-list li + li {
+  margin-top: 12px;
+}
+
+/* 본문 안의 작은 제목: 행복, 성실함, 존중과 배려 */
+.accordion-copy h4 {
+  margin: 24px 0 8px;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.accordion-copy h4:first-child {
+  margin-top: 0;
+}
+
+/* 세로 스크롤바가 생겨도 화면이 좌우로 흔들리지 않게 합니다. */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* 두 열로 표시되는 화면에서 왼쪽 목차 간격을 유지합니다. */
+@media (min-width: 701px) {
+  .intro.is-selected {
+    /* 기존 목차의 글자 크기 × 줄 높이 */
+    --menu-line-height: calc(clamp(16px, 1.6vw, 28px) * 1.4);
+
+    /*
+      1행: 큰 '나의'와 선택한 제목
+      2~5행: 일정한 높이의 목차 네 개
+      6행: 마지막 목차와 긴 본문에 필요한 나머지 공간
+
+      본문이 길어질 때 마지막 행만 늘어나므로
+      목차 다섯 개의 시작 위치는 그대로 유지됩니다.
+    */
+    grid-template-rows:
+      max-content
+      repeat(4, var(--menu-line-height))
+      minmax(var(--menu-line-height), auto);
+
+    row-gap: 14px;
+    align-content: start;
+  }
+
+  .intro.is-selected .menu li:not(.is-current) {
+    align-self: start;
+  }
+
+  .intro.is-selected .menu li:not(.is-current) .menu-button {
+    line-height: 1.4;
+  }
+}
+
+/* 직업 이름과 해당 경험을 구분합니다. */
+.experience-list {
+  margin: 20px 0 0;
+}
+
+.experience-list dt {
+  margin-top: 18px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.experience-list dt:first-child {
+  margin-top: 0;
+}
+
+.experience-list dd {
+  margin: 6px 0 0;
+  padding-left: 14px;
+  border-left: 1px solid #737b90;
+}
+
+/* 성장 본문 안의 기부증서 버튼 */
+.growth-certificate {
+  display: inline-block;
+  margin-top: 14px;
+  min-height: 44px;
+}
+
+.growth-certificate:focus-visible {
+  outline: 2px solid #cbd8ff;
+  outline-offset: 4px;
+}

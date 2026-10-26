@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>나의 자기소개</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <main class="page">
+
+    <!-- 큰 '나의'와 여섯 목차 -->
+    <section class="intro" aria-label="자기소개 목차">
+      <h1 class="main-title">
+        <button
+          type="button"
+          id="home-button"
+          class="home-button"
+          aria-label="처음 화면으로 돌아가기"
+        >
+          나의
+        </button>
+      </h1>
+
+      <ul class="menu">
+        <li>
+          <button type="button" class="menu-button" data-section="story">
+            이야기
+          </button>
+        </li>
+
+        <li>
+          <button type="button" class="menu-button" data-section="values">
+            성향과 인생관
+          </button>
+        </li>
+
+        <li>
+          <button type="button" class="menu-button" data-section="experience">
+            경험과 성장과정
+          </button>
+        </li>
+
+        <li>
+          <button type="button" class="menu-button" data-section="relationships">
+            인간관계
+          </button>
+        </li>
+
+        <li>
+          <button type="button" class="menu-button" data-section="goals">
+            목표
+          </button>
+        </li>
+
+        <li>
+          <button type="button" class="menu-button" data-section="privacy">
+            정보 공개 범위
+          </button>
+        </li>
+      </ul>
+            <!-- '이야기'를 선택했을 때 표시할 내용 -->
+      <section
+        id="story-content"
+        class="story-content"
+        aria-labelledby="story-content-title"
+        hidden
+      >
+        <h2 id="story-content-title" class="sr-only">
+          이야기
+        </h2>
+
+        <div class="accordion-item">
+          <h3 class="accordion-heading">
+            <button
+              type="button"
+              id="about-toggle"
+              class="accordion-toggle"
+              aria-expanded="false"
+              aria-controls="about-panel"
+            >
+              자기소개
+              <span class="accordion-symbol" aria-hidden="true">+</span>
+            </button>
+          </h3>
+
+          <div
+            id="about-panel"
+            class="accordion-panel"
+            role="region"
+            aria-labelledby="about-toggle"
+            aria-hidden="true"
+            inert
+          >
+            <div class="accordion-inner">
+              <div class="accordion-copy">
+                <p>
+                  안녕하세요. 저는 다양한 경험을 통해 저만의 방향과
+                  속도를 찾아가는 사람입니다.
+                </p>
+
+                <p>
+                  저는 지금까지 여러 직업과 환경을 경험하면서 사람과 일,
+                  그리고 삶을 바라보는 시각이 조금씩 달라졌습니다.
+                </p>
+
+                <p>
+                  모든 경험이 좋은 결과로 이어진 것은 아니지만
+                  그 과정에서도 배운 것은 것이 있고,
+                  모든것이 모여 저를 만들었다고 생각합니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-heading">
+            <button
+              type="button"
+              id="page-toggle"
+              class="accordion-toggle"
+              aria-expanded="false"
+              aria-controls="page-panel"
+            >
+              페이지 소개
+              <span class="accordion-symbol" aria-hidden="true">+</span>
+            </button>
+          </h3>
+
+          <div
+            id="page-panel"
+            class="accordion-panel"
+            role="region"
+            aria-labelledby="page-toggle"
+            aria-hidden="true"
+            inert
+          >
+            <div class="accordion-inner">
+              <div class="accordion-copy">
+                <p>
+                  이 페이지는 저를 처음 만나는 사람에게 제가 해온 경험과
+                  그 과정에서 배운 점, 앞으로 되고 싶은 모습을
+                  소개하기 위해 만들었습니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+            <!-- '성향과 인생관'을 선택했을 때 표시할 내용 -->
+      <section
+        id="values-content"
+        class="story-content"
+        aria-labelledby="values-content-title"
+        hidden
+      >
+        <h2 id="values-content-title" class="sr-only">
+          성향과 인생관
+        </h2>
+
+        <div class="accordion-item">
+          <h3 class="accordion-heading">
+            <button
+              type="button"
+              id="personality-toggle"
+              class="accordion-toggle"
+              aria-expanded="false"
+              aria-controls="personality-panel"
+            >
+              성향
+              <span class="accordion-symbol" aria-hidden="true">+</span>
+            </button>
+          </h3>
+
+          <div
+            id="personality-panel"
+            class="accordion-panel"
+            role="region"
+            aria-labelledby="personality-toggle"
+            aria-hidden="true"
+            inert
+          >
+            <div class="accordion-inner">
+              <div class="accordion-copy">
+                <ul class="personality-list">
+                  <li>
+                    돈만큼 호기심과 관심도 중요하다고 생각합니다.
+                  </li>
+                  <li>
+                    흥미를 느끼는 일이라면, 어렵더라도 직접 배우고
+                    도전해 보고 싶습니다.
+                  </li>
+                  <li>
+                    다른 사람에게 신뢰를 줄 수 있는 사람이 되고 싶습니다.
+                  </li>
+                  <li>
+                    생각보다 무념무상합니다.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-heading">
+            <button
+              type="button"
+              id="outlook-toggle"
+              class="accordion-toggle"
+              aria-expanded="false"
+              aria-controls="outlook-panel"
+            >
+              인생관
+              <span class="accordion-symbol" aria-hidden="true">+</span>
+            </button>
+          </h3>
+
+          <div
+            id="outlook-panel"
+            class="accordion-panel"
+            role="region"
+            aria-labelledby="outlook-toggle"
+            aria-hidden="true"
+            inert
+          >
+            <div class="accordion-inner">
+              <div class="accordion-copy">
+                <h4>행복</h4>
+                <p>
+                  제가 삶에서 추구하는 가장 궁극적인 목표입니다.
+                </p>
+
+                <h4>성실함</h4>
+                <p>
+                  모든 노력이 반드시 좋은 결과로 이어지진 않아요.
+                  하지만 성실함만 있다면 좋지 못한 결과에서도
+                  배우는 것이 있고 성장한다고 생각합니다.
+                </p>
+
+                <h4>존중과 배려</h4>
+                <p>
+                  서로의 생각과 입장을 존중하고 배려하는 태도는
+                  매우 중요하게 생각합니다.
+                  가장 중요한건 내가 배려했다고 무조건 상대방도
+                  나를 배려해야 하는 것이 아닙니다.
+                  배려를 일방적인 기대가 아닌, 서로의 차이를
+                  인정하는 태도로 바라보려고 합니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+            <!-- '경험과 성장과정'을 선택했을 때 표시할 내용 -->
+      <section
+        id="experience-content"
+        class="story-content"
+        aria-labelledby="experience-content-title"
+        hidden
+      >
+        <h2 id="experience-content-title" class="sr-only">
+          경험과 성장과정
+        </h2>
+
+        <div class="accordion-item">
+          <h3 class="accordion-heading">
+            <button
+              type="button"
+              id="past-toggle"
+              class="accordion-toggle"
+              aria-expanded="false"
+              aria-controls="past-panel"
+            >
+              과거의 경험
+              <span class="accordion-symbol" aria-hidden="true">+</span>
+            </button>
+          </h3>
+
+          <div
+            id="past-panel"
+            class="accordion-panel"
+            role="region"
+            aria-labelledby="past-toggle"
+            aria-hidden="true"
+            inert
+          >
+            <div class="accordion-inner">
+              <div class="accordion-copy">
+                <h4>10대</h4>
+                <p>친구들과 재밌게 놀았습니다.</p>
+
+                <h4>20대</h4>
+                <p>
+                  20대에 여러직업을 경험하면서 이전에는 알지 못했던
+                  사회의 다양한 모습을 접했습니다.
+                </p>
+
+                <dl class="experience-list">
+                  <dt>놀이공원</dt>
+                  <dd>
+                    서로간의 배려와 팀워크, 즐겁게 일하는법을 배웠습니다.
+                  </dd>
+
+                  <dt>호텔 프론트</dt>
+                  <dd>
+                    장시간 근무를 경험하며 업무 환경과 신체적 피로가
+                    일상생활에 미치는 영향을 배웠습니다.
+                  </dd>
+
+                  <dt>경비업체</dt>
+                  <dd>
+                    조직 내부에서 다양한 사람과 갈등을 마주하며,
+                    생각과 입장이 다르다는걸 배웠습니다.
+                  </dd>
+
+                  <dt>콜센터</dt>
+                  <dd>
+                    고객을 응대하며 말의 무게와 단어 선택이
+                    얼마나 중요한지 알게 되었습니다.
+                  </dd>
+
+                  <dt>PC방</dt>
+                  <dd>
+                    여러 유형의 고객을 응대하며 예상치 못한 상황과
+                    사람의 행동을 경험했습니다.
+                  </dd>
+
+                  <dt>네트워크 유지보수</dt>
+                  <dd>
+                    처음으로 프로젝트에 참여하면서 실무의 진행 과정과
+                    협업의 중요성을 배웠습니다.
+                  </dd>
+
+                  <dt>카페창업</dt>
+                  <dd>
+                    직접 사업을 운영하면서 매장 관리와 사람관리,
+                    프랜차이즈 운영의 현실을 배웠습니다.
+                  </dd>
+                </dl>
+
+                <h4>30대</h4>
+                <p>
+                  그동안 경험을 통해 배웠던 것을 되돌아보고 부족한 부분을
+                  채우며, 과거의 경험을 바탕으로 새로운 경험을 배우며
+                  앞으로 나아갈 방향을 찾고 있습니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-heading">
+            <button
+              type="button"
+              id="growth-toggle"
+              class="accordion-toggle"
+              aria-expanded="false"
+              aria-controls="growth-panel"
+            >
+              성장
+              <span class="accordion-symbol" aria-hidden="true">+</span>
+            </button>
+          </h3>
+
+          <div
+            id="growth-panel"
+            class="accordion-panel"
+            role="region"
+            aria-labelledby="growth-toggle"
+            aria-hidden="true"
+            inert
+          >
+            <div class="accordion-inner">
+              <div class="accordion-copy">
+                <h4>도전과 실행, 현실적인 판단</h4>
+                <p>
+                  카페 창업에 도전해서 운영을 하면서 사람과 매장을
+                  관리하며 생각보다 더 많은 시간과 노력이 들어가고
+                  이상을 찾아가는 저에게 현실을 알려준
+                  가장 값비싼 경험이었습니다.
+                </p>
+
+                <h4>실무를 통해 배우는 태도</h4>
+                <p>
+                  처음 참여한 네트워크 유지보수 프로젝트에서 팀원들과
+                  함께 지역 소방본부 서버실에 서버와 라우팅 장비를
+                  추가 설치했습니다.
+                </p>
+                <p>
+                  처음에는 의욕이 앞서 소통 부족으로 중복 작업과
+                  일정 지연이 발생했지만 회의를 통해 작업 내용을
+                  공유하고 협력하면서 업무를 원활하게 진행할 수 있었습니다.
+                </p>
+
+                <h4>나눔을 실천하는 태도</h4>
+                <p>
+                  5년을 길러오던 긴 머리를 기부하며 나눔에도
+                  여러가지 형태가 있고 나의 작은 행동도 누군가에게
+                  도움으로 다가갈수 있다는 값진 경험이었습니다.
+                </p>
+
+                <button
+                  type="button"
+                  class="certificate-open growth-certificate"
+                  data-certificate-open
+                  aria-haspopup="dialog"
+                  aria-controls="certificate-dialog"
+                >
+                  기부증서 보기
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 인간관계 -->
+      <section
+        id="relationships-content"
+        class="story-content"
+        aria-labelledby="relationships-content-title"
+        hidden
+      >
+        <h2 id="relationships-content-title" class="sr-only">
+          인간관계
+        </h2>
+
+        <div class="accordion-item">
+          <h3 class="accordion-heading">
+            <button
+              type="button"
+              id="relationships-toggle"
+              class="accordion-toggle"
+              aria-expanded="false"
+              aria-controls="relationships-panel"
+            >
+              인간관계
+              <span class="accordion-symbol" aria-hidden="true">+</span>
+            </button>
+          </h3>
+
+          <div
+            id="relationships-panel"
+            class="accordion-panel"
+            role="region"
+            aria-labelledby="relationships-toggle"
+            aria-hidden="true"
+            inert
+          >
+            <div class="accordion-inner">
+              <div class="accordion-copy">
+                <h4>배려와 존중</h4>
+                <p>
+                  서로 다른 생각과 입장도 존중하며 대화한다면 더 좋은
+                  아이디어와 협력으로 이어질 수 있다고 생각합니다.
+                  앞으로도 상대방의 이야기에 귀 기울이고, 서로의 차이를
+                  인정하는 태도를 유지하려고 노력합니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-heading">
+            <button
+              type="button"
+              id="communication-toggle"
+              class="accordion-toggle"
+              aria-expanded="false"
+              aria-controls="communication-panel"
+            >
+              소통
+              <span class="accordion-symbol" aria-hidden="true">+</span>
+            </button>
+          </h3>
+
+          <div
+            id="communication-panel"
+            class="accordion-panel"
+            role="region"
+            aria-labelledby="communication-toggle"
+            aria-hidden="true"
+            inert
+          >
+            <div class="accordion-inner">
+              <div class="accordion-copy">
+                <h4>말의 무게</h4>
+                <p>
+                  같은 의미라도 어떤 단어와 표현을 사용하는지에 따라
+                  다르게 전달될 수 있습니다. 그래서 말하는 것뿐 아니라
+                  상대방이 어떻게 받아들일지도 생각하려고 노력합니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 목표 -->
+      <section
+        id="goals-content"
+        class="story-content"
+        aria-labelledby="goals-content-title"
+        hidden
+      >
+        <h2 id="goals-content-title" class="sr-only">
+          목표
+        </h2>
+
+        <div class="accordion-item">
+          <h3 class="accordion-heading">
+            <button
+              type="button"
+              id="trust-toggle"
+              class="accordion-toggle"
+              aria-expanded="false"
+              aria-controls="trust-panel"
+            >
+              신뢰할 수 있는 사람
+              <span class="accordion-symbol" aria-hidden="true">+</span>
+            </button>
+          </h3>
+
+          <div
+            id="trust-panel"
+            class="accordion-panel"
+            role="region"
+            aria-labelledby="trust-toggle"
+            aria-hidden="true"
+            inert
+          >
+            <div class="accordion-inner">
+              <div class="accordion-copy">
+                <p>
+                  제가 맡은 일에 책임을 다하고, 다른 사람이 믿고
+                  의지할 수 있는 사람이 되고 싶습니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-heading">
+            <button
+              type="button"
+              id="happiness-toggle"
+              class="accordion-toggle"
+              aria-expanded="false"
+              aria-controls="happiness-panel"
+            >
+              행복하게 살아가는 사람
+              <span class="accordion-symbol" aria-hidden="true">+</span>
+            </button>
+          </h3>
+
+          <div
+            id="happiness-panel"
+            class="accordion-panel"
+            role="region"
+            aria-labelledby="happiness-toggle"
+            aria-hidden="true"
+            inert
+          >
+            <div class="accordion-inner">
+              <div class="accordion-copy">
+                <p>
+                  무엇보다 제가 선택한 삶에 스스로 만족할 수 있는
+                  사람이 되고싶습니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 정보 공개 범위 -->
+      <section
+        id="privacy-content"
+        class="story-content"
+        aria-labelledby="privacy-content-title"
+        hidden
+      >
+        <h2 id="privacy-content-title" class="sr-only">
+          정보 공개 범위
+        </h2>
+
+        <div class="accordion-item">
+          <h3 class="accordion-heading">
+            <button
+              type="button"
+              id="public-info-toggle"
+              class="accordion-toggle"
+              aria-expanded="false"
+              aria-controls="public-info-panel"
+            >
+              공개정보
+              <span class="accordion-symbol" aria-hidden="true">+</span>
+            </button>
+          </h3>
+
+          <div
+            id="public-info-panel"
+            class="accordion-panel"
+            role="region"
+            aria-labelledby="public-info-toggle"
+            aria-hidden="true"
+            inert
+          >
+            <div class="accordion-inner">
+              <div class="accordion-copy">
+                <ul class="personality-list">
+                  <li>경험과 활동</li>
+                  <li>가치관과 생각</li>
+                  <li>미래의 목표</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-heading">
+            <button
+              type="button"
+              id="private-info-toggle"
+              class="accordion-toggle"
+              aria-expanded="false"
+              aria-controls="private-info-panel"
+            >
+              비공개 정보
+              <span class="accordion-symbol" aria-hidden="true">+</span>
+            </button>
+          </h3>
+
+          <div
+            id="private-info-panel"
+            class="accordion-panel"
+            role="region"
+            aria-labelledby="private-info-toggle"
+            aria-hidden="true"
+            inert
+          >
+            <div class="accordion-inner">
+              <div class="accordion-copy">
+                <ul class="personality-list">
+                  <li>개인 연락처</li>
+                  <li>비공개 업무 자료</li>
+                  <li>계정 및 인증 정보</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+    </section>
+
+    <!-- 첫 화면 오른쪽 아래 소개 영역 -->
+    <aside class="preview" aria-labelledby="preview-title">
+      <div class="preview-text">
+        <h2 id="preview-title">ABOUT ME / PREVIEW</h2>
+
+        <p class="summary">
+          다양한 경험을 통해 저만의 방향을 찾아가는 사람입니다.
+        </p>
+
+        <p class="purpose">
+          이 페이지는 저를 처음 만나는 사람에게 제가 해온 경험과
+          그 과정에서 배운 점, 앞으로 되고 싶은 모습을 소개하기 위해
+          만들었습니다.
+        </p>
+
+        <p class="activities">
+          활동 · 카페 창업 / IT 프로젝트 / 머리카락 기부
+        </p>
+
+        <!-- 두 버튼 모두 팝업 밖, 소개 영역 안에 있습니다. -->
+        <div class="preview-actions">
+          <button
+            type="button"
+            id="certificate-open"
+            class="certificate-open"
+            aria-haspopup="dialog"
+            aria-controls="certificate-dialog"
+          >
+            기부증서 미리보기
+          </button>
+
+          <button
+            type="button"
+            id="motion-button"
+            class="motion-button"
+            aria-pressed="false"
+          >
+            모션 OFF
+          </button>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- 기부증서 팝업: 제목, 닫기 버튼, 이미지만 들어갑니다. -->
+  <dialog
+    id="certificate-dialog"
+    class="certificate-dialog"
+    aria-labelledby="certificate-title"
+  >
+    <div class="dialog-header">
+      <h2 id="certificate-title">기부증서</h2>
+
+      <button
+        type="button"
+        id="certificate-close"
+        class="certificate-close"
+        autofocus
+      >
+        닫기
+      </button>
+    </div>
+
+    <img
+      class="dialog-image"
+      src="images/donation.jpg"
+      alt="개인정보가 삭제된 머리카락 기부증서. 기부일자 2025년 8월 8일."
+      width="1073"
+      height="1511"
+    >
+  </dialog>
+
+</body>
+</html>
